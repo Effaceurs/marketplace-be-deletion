@@ -1,0 +1,31 @@
+stages:
+  - build
+  - deploy
+
+
+build:
+  stage: build
+
+  image:
+    docker:20.10.13-alpine3.15
+
+  services:
+    - name: docker:20.10.13-dind-alpine3.15
+      command: ["--insecure-registry=192.168.110.135:5000"]
+
+  script:
+    - ls -ltr
+    - docker build -t "192.168.110.135:5000/deletion:test" .
+    - docker images 
+    - docker push 192.168.110.135:5000/deletion:test
+    
+
+deploy:
+    image: 
+        name: alpine/k8s:1.22.10
+    stage: deploy
+    before_script:
+      - mkdir ~/.kube/
+      - echo ${KUBE_CONFIG} | base64 -d > ~/.kube/config
+    script:
+      - kubectl apply -f manifests/.
