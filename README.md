@@ -1,2 +1,0 @@
-# marketplace-be-deletion
-
