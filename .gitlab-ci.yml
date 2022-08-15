@@ -30,7 +30,7 @@ release:
       - git config --global user.email "${GITLAB_USER_EMAIL}"
     script:
       - mkdir manifests/release/ || echo 'already exists' 
-      - cd manifests/release/ 
+      - cd manifests/base/ 
       - kustomize edit set image image=192.168.110.135:5000/deletion:$CI_PIPELINE_ID
       - kustomize build > ../release/manifest.yaml
     after_script:
