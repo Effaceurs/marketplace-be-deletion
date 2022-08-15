@@ -18,5 +18,5 @@ spec:
         app: deletion
     spec:
       containers:
-      - image: 192.168.110.135:5000/deletion:711
+      - image: 192.168.110.135:5000/deletion:725
         name: deletion
