@@ -2,6 +2,5 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - marketplace-be-deletion-deployment.yaml
-- marketplace-be-deletion-namespace.yaml
 namespace: backend
 images:
