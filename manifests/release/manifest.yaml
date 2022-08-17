@@ -6,7 +6,7 @@ metadata:
   name: marketplace-be-deletion
   namespace: backend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: deletion
@@ -18,5 +18,12 @@ spec:
         app: deletion
     spec:
       containers:
-      - image: 192.168.110.135:5000/deletion:725
+      - image: 192.168.110.135:5000/deletion:9ece34ca
         name: deletion
+        resources:
+          limits:
+            cpu: 25m
+            memory: 64Mi
+          requests:
+            cpu: 10m
+            memory: 32Mi
